@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <title>iPad FPS Demo</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
+    #ui {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+    }
+    button {
+      font-size: 18px;
+      padding: 12px 18px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="ui">
+    <button onclick="shoot()">🔫 射击</button>
+    <button onclick="reload()">🔄 换弹</button>
+    <span id="score">得分：0</span>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let score = 0;
+
+    function shoot() {
+      score += 1;
+      document.getElementById("score").innerText = "得分：" + score;
+      alert("击杀敌人 +1");
+    }
+
+    function reload() {
+      alert("换弹完成");
+    }
+
+    ctx.fillStyle = "gray";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "30px sans-serif";
+    ctx.fillText("iPad FPS Demo", 50, 100);
+  </script>
+</body>
+</html>
